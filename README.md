@@ -245,8 +245,3 @@ DELETE /api/users/:id
 | `EADDRINUSE :::8080` | Port 8080 is already in use | Kill the other process or set `PORT` to a different value |
 | Toast notifications not appearing | `shared.js` not loaded before page scripts | Ensure the footer partial is included **before** page-specific `<script>` tags |
 
----
-
-## 📝 License
-
-ISC
