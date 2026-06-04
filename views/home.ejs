@@ -1,0 +1,31 @@
+<%- include("partials/head", { title, bodyAttributes: "" }) %>
+
+<section class="hero">
+    <div>
+        <span class="pill">Modern full-stack upgrade</span>
+        <h1>Manage users with a cleaner interface and safer database actions.</h1>
+        <p>
+            This dashboard now supports a polished UI, searchable and sortable tables,
+            server-backed CRUD APIs, responsive layouts, validation, and clear feedback
+            for success or failure states.
+        </p>
+        <div class="hero-actions">
+            <a class="button" href="/users">Open User Table</a>
+            <a class="button-secondary" href="/users/new">Create New Record</a>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <article class="metric-card">
+            <span class="metric-label">Total users in database</span>
+            <strong class="metric-value"><%= count %></strong>
+        </article>
+        <article class="metric-card">
+            <span class="metric-label">Available actions</span>
+            <strong class="metric-value">CRUD</strong>
+            <p class="helper-text">Create, view, update, search, sort, paginate, and delete records.</p>
+        </article>
+    </div>
+</section>
+
+<%- include("partials/footer") %>

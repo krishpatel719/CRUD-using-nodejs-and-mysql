@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/public/css/app.css">
+</head>
+<body <%- typeof bodyAttributes !== "undefined" ? bodyAttributes : "" %>>
+    <div class="toast-stack" data-toast-stack></div>
+    <div class="shell">
+        <nav class="nav">
+            <a class="brand" href="/">
+                <strong>DataFlow Admin</strong>
+                <span>Responsive CRUD dashboard for your MySQL data</span>
+            </a>
+            <div class="nav-links">
+                <a class="button-ghost" href="/">Dashboard</a>
+                <a class="button-ghost" href="/users">Users</a>
+                <a class="button" href="/users/new">Add User</a>
+            </div>
+        </nav>

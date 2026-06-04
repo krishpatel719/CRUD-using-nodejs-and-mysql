@@ -1,0 +1,93 @@
+<%- include("../partials/head", { title, bodyAttributes: `data-page-size="${pageSize}"` }) %>
+
+<section class="panel">
+    <div class="page-heading">
+        <div>
+            <h1 class="page-title">User Records</h1>
+            <p class="page-subtitle">
+                Browse every record stored in MySQL, filter results quickly, and keep
+                the table synced after edits or deletions.
+            </p>
+        </div>
+        <div class="page-actions">
+            <a class="button" href="/users/new">Add New User</a>
+        </div>
+    </div>
+
+    <div class="filters">
+        <div class="filter-field">
+            <label for="search">Search users</label>
+            <input id="search" data-search-input type="search" placeholder="Search by username or email">
+        </div>
+        <div class="filter-field">
+            <label for="domain">Filter by email domain</label>
+            <input id="domain" data-domain-input type="text" placeholder="example.com">
+        </div>
+        <div class="filter-field">
+            <label for="pageSize">Rows per page</label>
+            <select id="pageSize" data-page-size>
+                <option value="5">5</option>
+                <option value="8" selected>8</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+</section>
+
+<section class="table-wrap">
+    <div class="loading-overlay" data-loading>
+        <div class="spinner" aria-label="Loading"></div>
+    </div>
+
+    <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th><button class="sortable" type="button" data-sort-by="username">Username</button></th>
+                    <th><button class="sortable" type="button" data-sort-by="email">Email</button></th>
+                    <th>Password</th>
+                    <th><button class="sortable" type="button" data-sort-by="created_at">Created</button></th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody data-users-body>
+                <tr>
+                    <td colspan="5" class="status-row">Loading user records...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="empty-state" data-empty-state hidden>
+        <h3>No records found</h3>
+        <p>Try a different search term or create a new user record.</p>
+    </div>
+
+    <div class="pagination">
+        <div>
+            <strong data-page-info>Page 1 of 1</strong>
+            <div class="helper-text" data-total-info>0 records found</div>
+        </div>
+        <div class="page-actions">
+            <button class="button-secondary" type="button" data-prev-page>Previous</button>
+            <button class="button-secondary" type="button" data-next-page>Next</button>
+        </div>
+    </div>
+</section>
+
+<dialog class="dialog" data-delete-dialog>
+    <div class="dialog-card">
+        <h3>Delete this user?</h3>
+        <p class="helper-text">
+            This action permanently removes the record from the database.
+        </p>
+        <div class="dialog-actions">
+            <button class="button-secondary" type="button" data-cancel-delete>Cancel</button>
+            <button class="button-danger" type="button" data-confirm-delete>Delete</button>
+        </div>
+    </div>
+</dialog>
+
+<%- include("../partials/footer") %>
+<script src="/public/js/users-table.js"></script>

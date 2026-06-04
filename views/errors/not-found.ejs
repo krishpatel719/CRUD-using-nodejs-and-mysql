@@ -1,0 +1,13 @@
+<%- include("../partials/head", { title, bodyAttributes: "" }) %>
+
+<section class="form-card">
+    <span class="pill">Status</span>
+    <h1 class="page-title"><%= title %></h1>
+    <p class="page-subtitle"><%= message %></p>
+    <div class="form-actions">
+        <a class="button-secondary" href="/">Go Home</a>
+        <a class="button" href="/users">View Users</a>
+    </div>
+</section>
+
+<%- include("../partials/footer") %>

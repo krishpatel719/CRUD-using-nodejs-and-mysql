@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS first_conncetion;
+USE first_conncetion;
+
+CREATE TABLE IF NOT EXISTS user (
+    id CHAR(36) PRIMARY KEY,
+    username VARCHAR(40) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT chk_username_length CHECK (CHAR_LENGTH(username) >= 3),
+    CONSTRAINT chk_password_length CHECK (CHAR_LENGTH(password) >= 6)
+);

@@ -1,0 +1,51 @@
+<%- include("../partials/head", { title, bodyAttributes: "" }) %>
+
+<section class="form-card">
+    <div class="page-heading">
+        <div>
+            <h1 class="page-title"><%= formMode === "edit" ? "Edit User" : "Add New User" %></h1>
+            <p class="page-subtitle">
+                <%= formMode === "edit"
+                    ? "Update the selected record. Leave the password blank to keep the current value."
+                    : "Create a new record and store it directly in the MySQL database." %>
+            </p>
+        </div>
+    </div>
+
+    <form data-user-form data-mode="<%= formMode %>" data-user-id="<%= user.id || "" %>">
+        <div class="form-grid">
+            <div class="field">
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text" value="<%= user.username %>" placeholder="Enter a username">
+                <div class="field-error" data-field-error="username"></div>
+            </div>
+
+            <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" value="<%= user.email %>" placeholder="name@example.com">
+                <div class="field-error" data-field-error="email"></div>
+            </div>
+
+            <div class="field full">
+                <label for="password"><%= formMode === "edit" ? "Password (optional)" : "Password" %></label>
+                <input id="password" name="password" type="password" value="" placeholder="<%= formMode === "edit" ? "Leave blank to keep current password" : "Enter a secure password" %>">
+                <div class="field-error" data-field-error="password"></div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <a class="button-secondary" href="/users">Back to Table</a>
+            <button
+                class="button"
+                type="submit"
+                data-submit-button
+                data-default-label="<%= formMode === "edit" ? "Save Changes" : "Create User" %>"
+            >
+                <%= formMode === "edit" ? "Save Changes" : "Create User" %>
+            </button>
+        </div>
+    </form>
+</section>
+
+<%- include("../partials/footer") %>
+<script src="/public/js/user-form.js"></script>
